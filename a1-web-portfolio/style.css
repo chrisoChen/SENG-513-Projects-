@@ -1,0 +1,502 @@
+/*  Don't use if using Bootstrap/CSS Library to do this */
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  /* fixes background being cut off by external text with overflow*/
+  overflow: auto;
+  background: -webkit-linear-gradient(#ffffff, #e4e4e4);
+}
+
+h1 {
+  font-family: "Calibri", "Gill Sans", "Gill Sans MT", "Trebuchet MS",
+    "sans-serif";
+  font-size: 60px;
+}
+
+p {
+  font-family: "Calibri", "Gill Sans", "Gill Sans MT", "Trebuchet MS",
+    "sans-serif";
+  font-size: 20px;
+}
+
+.logo,
+.icons {
+  width: 10%;
+  height: 20%;
+}
+
+/* Wild Card */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Current page reflected in Navbar */
+.current-page {
+  background-color: #91b3b3;
+  background-size: auto;
+  /* Add back later as icon next to home */
+  /* background-image: url(./img/chris-logo.ico); */
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  border: none;
+  border-radius: 15%;
+  width: 60px;
+}
+
+.current-page span {
+  display: none;
+}
+
+#navbar {
+  /* z-index fixed text-transparency issue */
+  z-index: 1;
+  font-size: 20px;
+  text-align: center;
+}
+
+/* List for navbar */
+#navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 10px;
+  overflow: hidden;
+  background-color: rgb(56, 55, 55);
+}
+
+#navbar li {
+  display: inline-block;
+}
+
+#navbar a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 10px 12px;
+  text-decoration: none;
+}
+
+#navbar li a:hover {
+  background-color: #738787;
+  border-radius: 15%;
+}
+
+.bg-hero::before {
+  background-image: url("./img/backgrounds/breadwood.jpeg");
+  background-size: cover;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+}
+
+.bg-hero {
+  height: 100%;
+  width: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  /* was relative before, changed absolute */
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+/* was going to use for homepage: not currently in use */
+/* .hero2 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.027), rgba(0, 0, 0, 0.027)),
+    url("./img/backgrounds/laptop2.jpg");
+  background-size: cover;
+  height: 50%;
+  width: 50%;
+  min-width: 50%;
+  min-height: 50%;
+  position: absolute;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
+
+.bg-text-hero {
+  text-align: left;
+  position: absolute;
+  margin-left: 20%;
+  margin-right: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+}
+
+/* change home screen to center when on mobile or different size  */
+@media screen and (max-width: 900px) {
+  .bg-text-hero {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    margin-right: 0%;
+  }
+}
+
+/* adding p h1 fixed button text issue */
+.bg-text-hero > p,
+h1 {
+  background: -webkit-linear-gradient(#723939, #f11111);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* text-hero for words on backgrounds. Not currently in Use */
+/* .bg-text-hero2 {
+  text-align: center;
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  top: 30%;
+} */
+
+.bg-text-hero2 > h1 {
+  background: -webkit-linear-gradient(#eeeeee, #f64343);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.about-hero {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("./img/backgrounds/redbook2.jpg");
+  background-size: cover;
+  height: 35%;
+  width: 100%;
+  min-height: 35%;
+  min-width: 100%;
+  /* changing position fixed elements stacking on top of each other */
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.about-hero img {
+  border-radius: 50%;
+  /* Bellow used for centering: */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  max-width: 60%;
+  max-height: 70%;
+  padding: 2em;
+}
+
+/* main body for about and contact page */
+.body-section {
+  /* height: 100%; */
+  width: 100%;
+  max-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+}
+/* Change for alignment of bottom buttons when on mobile */
+@media screen and (max-width: 900px) {
+  .body-section {
+    max-width: 60%;
+  }
+}
+
+/* Change for alignment of bottom buttons when on mobile */
+@media screen and (max-width: 600px) {
+  .body-section {
+    max-width: 80%;
+  }
+}
+
+.body-section > p {
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  margin-bottom: 1em;
+}
+
+.body-section > h1 {
+  font-size: 35px;
+  margin-top: 1em;
+}
+
+/* Changed max-width from 50% to 70% for perfect fit */
+.projects-section {
+  width: 100%;
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+}
+
+.projects-section > h1 {
+  font-size: 35px;
+  margin-top: 2em;
+}
+
+/* CSS For projects page */
+.projects-hero {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    url("./img/backgrounds/laptop2split.jpg");
+  background-size: cover;
+  height: 35%;
+  width: 100%;
+  min-height: 35%;
+  min-width: 100%;
+  /* changing position fixed elements stacking on top of each other */
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Buttons for bottom of page */
+.button-style {
+  background-color: #587070;
+  border: none;
+  color: white;
+  padding: 16px 12px;
+  text-align: center;
+  font-size: 16px;
+  margin: 6px 4px;
+  opacity: 0.8;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button-style:hover {
+  opacity: 1;
+}
+
+/* Used for buttons down */
+.pad-buttons {
+  margin-top: 1em;
+}
+
+/* Used to center bottom buttons */
+.center-objects {
+  margin-top: 5em;
+  margin-bottom: 5em;
+  display: flex;
+  justify-content: center;
+}
+
+#footer-bar {
+  overflow: auto;
+}
+
+#footer-bar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 10px;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.123);
+}
+
+#footer-bar li {
+  display: inline-block;
+}
+
+#footer-bar a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 10px 12px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+#footer-bar li a:hover {
+  background-color: #738787;
+  border-radius: 5%;
+}
+
+.contact-footer > p {
+  font-weight: 200px;
+  letter-spacing: 0.05em;
+  margin-bottom: 2em;
+  color: #f7f7f7;
+}
+
+/* Initial footer before switch to solid color for background */
+/* 
+.contact-footer::before {
+  background-image: url("./img/backgrounds/strip-wood.jpeg");
+  background-size: cover;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+}
+.contact-footer {
+  padding: 30px 5px;
+  text-align: center;
+  text-decoration: none;
+  height: 20%;
+  width: 100%;
+  min-width: 100%;
+  min-height: 20%;
+  position: relative;
+} */
+
+.contact-footer2 {
+  /* background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("./img/strip-wood.jpeg"); */
+  text-align: center;
+  background-color: rgb(56, 55, 55);
+  text-decoration: none;
+}
+
+.github-icon {
+  background: url(./img/icons/github.png) no-repeat left center;
+  border-radius: 10%;
+  position: relative;
+  display: inline-block;
+  padding-left: 20px;
+}
+
+.linkedin-icon {
+  background: url(./img/icons/linkedin.png) no-repeat left center;
+  border-radius: 10%;
+  position: relative;
+  display: inline-block;
+  padding-left: 20px;
+}
+
+.projects-body {
+  background-color: #f1f1f1;
+  /* Padding fixed align issue when on mobile */
+  padding: 20px;
+}
+
+/* Center projects */
+.projects-main {
+  box-sizing: border-box;
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+.projects-h1 {
+  font-size: 50px;
+  word-break: break-all;
+}
+
+.projects-row {
+  margin: 8px -20px;
+}
+
+/* adds padding BETWEEN each column */
+.projects-row,
+.projects-row > .projects-column {
+  padding: 8px;
+}
+
+/* Create four equal columns that floats next to each other */
+.projects-column {
+  float: left;
+  width: 30%;
+}
+
+/* Clear floats after rows */
+.projects-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Content */
+.projects-content {
+  background-color: white;
+  padding: 25px;
+}
+
+.projects-content > p,
+.projects-content > hr {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.projects-content > h3 {
+  margin-top: 1em;
+  font-family: "Trebuchet MS", "Gill Sans", "Gill Sans MT", "Calibri";
+  background: -webkit-linear-gradient(#723939, #f11111);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Increasing opacities may make user dizzy */
+.project-image-effect:hover {
+  opacity: 0.6;
+  transition: 0.7s;
+}
+
+.project-image-effect > img {
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive layout - makes a two column-layout instead of my three columns. Changed from 50% to 100% for better results */
+@media screen and (max-width: 900px) {
+  .projects-column {
+    width: 100%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+/* @media screen and (max-width: 600px) {
+  .projects-column {
+    width: 100%;
+  }
+} */
+
+.contact-hero {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    url("./img/backgrounds/phone.jpg");
+  background-size: cover;
+  height: 35%;
+  width: 100%;
+  min-height: 35%;
+  min-width: 100%;
+  /* changing position fixed elements stacking on top of each other */
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.contact-table {
+  position: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  border: 2px solid black;
+  text-align: center;
+  font-family: "Calibri", "Gill Sans", "Gill Sans MT", "Trebuchet MS",
+    "sans-serif";
+  padding: 20px;
+}
+
+.contact-table-slot > th {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.contact-table-slot > td {
+  font-size: 22px;
+}

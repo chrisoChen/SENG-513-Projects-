@@ -1,0 +1,178 @@
+body {
+  background-color: #ccc;
+}
+
+.calculator {
+  border: 20px solid #ccc;
+  border-radius: 10px;
+  width: 600px;
+  max-width: 100%;
+  min-width: 20%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2%;
+  position: relative;
+}
+
+/* Change for alignment of bottom buttons when on mobile */
+@media screen and (max-width: 900px) {
+  .calculator {
+    width: 450px;
+    max-width: 60%;
+  }
+  buttons {
+    max-width: 80%;
+  }
+  .equal-button {
+    width: 200%;
+    max-width: 200%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .calculator {
+    max-width: 100%;
+  }
+  buttons {
+    max-width: 80%;
+    /* font-size: 10px; */
+  }
+  .equal-button {
+    width: 200%;
+    max-width: 200%;
+  }
+}
+
+@media screen and (max-width: 310px) {
+  .calculator {
+    max-width: 100%;
+  }
+  buttons {
+    max-width: 60%;
+    font-size: 5px;
+  }
+  .equal-button {
+    width: 200%;
+    max-width: 200%;
+  }
+}
+
+.display,
+.display > h1 {
+  width: 100%;
+  /* height: 200px;  */
+  padding: 5px;
+  font-size: 3rem;
+  border: none;
+  background-color: #252525;
+  color: #fff;
+  text-align: right;
+  padding-right: 20px;
+  padding-left: 10px;
+  overflow: scroll;
+  overflow-y: hidden;
+  position: relative;
+}
+.display > h1::-webkit-scrollbar {
+  width: 1em;
+}
+
+.display > h1::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.display > h1::-webkit-scrollbar-thumb {
+  background-color: rgb(65, 209, 84);
+  outline: 1px solid rgb(7, 47, 87);
+}
+
+.button-keys {
+  margin-top: 2%;
+}
+
+button {
+  height: 75px;
+  max-width: 100%;
+  min-width: 80%;
+  /* width: 110px; */
+  background-color: #fff;
+  border-radius: 3px;
+  border: 1px solid #c4c4c4;
+  background-color: transparent;
+  font-size: 30px;
+  color: #333;
+  background-image: linear-gradient(
+    to bottom,
+    transparent,
+    transparent 50%,
+    rgba(0, 0, 0, 0.04)
+  );
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1px 0 0 rgba(255, 255, 255, 0.15),
+    0 1px 0 0 rgba(255, 255, 255, 0.15);
+  text-shadow: 0 1px rgba(255, 255, 255, 0.4);
+}
+
+button:active {
+  background-color: #fff;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.button-keys {
+  display: grid;
+  /* 4 rows, fr = fraction */
+  grid-template-columns: repeat(4, 1fr);
+
+  font-size: 35px;
+}
+
+/* width:200% extends '=' button, don't set buttons a width */
+.equal-button {
+  /* width: 220px; */
+  width: 200%;
+  max-width: 200%;
+  background-color: #2e86c0;
+  border-color: #337cac;
+  color: #fff;
+  grid-row-start: 6;
+  grid-row-end: 6;
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+
+.equal-button:hover {
+  background-color: #4e9ed4;
+}
+
+.backspace-button,
+.reset-button {
+  background-color: #c44c4c;
+  border-color: #c75252;
+  color: #fff;
+}
+
+.backspace-button:hover,
+.reset-button:hover {
+  background-color: #df8282;
+}
+
+.h2-display-box,
+.h2-display-box > h2 {
+  width: 100%;
+  height: 30px;
+  border: none;
+  padding-top: 2px;
+  padding-right: 20px;
+  /* padding: 5px; */
+  background-color: #252525;
+}
+
+.h2-display-box > h2 {
+  font-size: 20px;
+  color: #fff;
+  text-align: right;
+  padding-right: 20px;
+  padding-left: 10px;
+}

@@ -1,0 +1,93 @@
+.card1 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 2em;
+  border: solid;
+  border-width: 2px;
+  border-radius: 5px;
+}
+
+.card2 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 2em;
+}
+
+.card3 {
+  margin: 4px;
+  padding: 4px;
+  border: solid;
+  border-width: 1px;
+}
+
+.nameForm {
+  margin-top: 3em;
+}
+
+/* Gomoku CSS */
+.piece {
+  margin: 5px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  position: absolute;
+  border: 1px;
+  border-color: solid white;
+  background: white;
+  box-shadow: 2px 2px 2px grey;
+  pointer-events: none;
+}
+
+.piece1 {
+  background: black;
+}
+
+.piece2 {
+  background: white;
+}
+
+.square {
+  float: left;
+  height: 50px;
+  width: 50px;
+  background-color: burlywood;
+  position: relative;
+  border: solid;
+  border-width: 0.5px;
+  z-index: -1;
+  cursor: pointer;
+}
+
+/* Setting height with width prevents event handler being triggered */
+.board {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-top: 20px;
+  min-width: 600px;
+  max-width: 600px;
+}
+
+.gameTitle {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.currentTurn,
+.myColor {
+  text-align: center;
+  margin-bottom: 1px;
+}
+
+#theme1 {
+  background-color: white;
+}
+
+#colorThemes {
+  margin: auto;
+  margin-right: auto;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+}

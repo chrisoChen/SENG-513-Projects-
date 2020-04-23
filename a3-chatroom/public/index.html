@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <script>
+    var socket = io();
+
+    // short-hand for $(document).ready(function()){});
+    $(function() {
+      var socket = io();
+
+      socket.on("checkUser", function() {
+        // Reuse existing cookies to create usernames 
+        if (document.cookie) {
+          socket.emit("addCookieUser", document.cookie);
+          $("#onlineUser").text("Welcome Back, " + document.cookie + "!");
+        } else {
+          // otherwise generate new user information
+          socket.emit("newCookieUser");
+        }
+      });
+
+      // Load previous chat messages for new user or if user reloads page 
+      socket.on("loadHistory", function(storedMsgs) {
+        for (let i = 0; i < storedMsgs.length; i++) {
+          $("#messages").append(
+            $("<li>").html(
+              storedMsgs[i].timeDisplay +
+                " | " +
+                '<span style="color:' +
+                storedMsgs[i].color +
+                '">' +
+                storedMsgs[i].clientName +
+                ": </span>" +
+                storedMsgs[i].msg
+            )
+          );
+        }
+      });
+
+      // Update new username after user changes nickname
+      socket.on("newUserAdd", function(userName) {
+        document.cookie = user;
+        $("#onlineUser").text("Welcome Back, " + userName + "!");
+      });
+
+      // Create new user cookie for first time connection
+      socket.on("initUserCookie", function(userId) {
+        document.cookie = userId;
+        $("#onlineUser").text("Welcome Back, " + userId + "!");
+      });
+
+      // Tell server to create message when user clicks 'Send'
+      $("form").submit(function(e) {
+        e.preventDefault(); // prevents page reloading
+        socket.emit("chat message", $("#m").val());
+        $("#m").val(""); // clear content of form
+        return false;
+      });
+
+      // Send user's message to all other users
+      socket.on("chatMessage", function(
+        time,
+        color,
+        clientName,
+        msg,
+        ischatFull
+      ) {
+        $("#messages").append(
+          $("<li>").html(
+            time +
+              " | " +
+              '<span style="color:' +
+              color +
+              '">' +
+              clientName +
+              ": </span>" +
+              msg
+          )
+        );
+      });
+
+      // Bold message for sent user
+      socket.on("boldChatMessage", function(
+        time,
+        color,
+        clientName,
+        msg,
+        ischatFull
+      ) {
+        $("#messages").append(
+          $("<li>").html(
+            time +
+              " | " +
+              '<b><span style="color:' +
+              color +
+              '">' +
+              clientName +
+              ": </span>" +
+              msg +
+              "</b>"
+          )
+        );
+      });
+
+      // Update user's cookies when user changes userName
+      socket.on("updateCookieName", function(updatedName) {
+        if (document.cookie) {
+          document.cookie = updatedName;
+        }
+      });
+
+      // Tell all users that a username has been changed
+      socket.on("nameChangeAlert", function(oldName, newName) {
+        $("#messages").append(
+          $("<li>").html(
+            "<i>" +
+              "<b>" +
+              oldName +
+              "</b>" +
+              " has changed their username to " +
+              "<b>" +
+              newName +
+              "</b>" +
+              "</i>"
+          )
+        );
+      });
+
+      // Tell all users that a user changed their color
+      socket.on("nameChangeColorAlert", function(clientName, color) {
+        $("#messages").append(
+          $("<li>").html(
+            "<i>" +
+              "<b>" +
+              clientName +
+              "</b>" +
+              " has changed their username color to " +
+              '<span style="color:' +
+              color +
+              '">' +
+              "<b>" +
+              color +
+              "</b>" +
+              "</span>" +
+              "</i>"
+          )
+        );
+      });
+
+      // If name already taken, alert user
+      socket.on("nameTaken", function(badName) {
+        $("#messages").append(
+          $("<li>").html(
+            "<i>" +
+              "<b>" +
+              "ERROR: " +
+              "</b>" +
+              "The username " +
+              "<b>" +
+              badName +
+              "</b>" +
+              " has already been taken. Please try another username. " +
+              "</i>"
+          )
+        );
+      });
+
+      // Update displayed online user at top when user changes name
+      socket.on("updateOnlineUser", function(clientName) {
+        $("#onlineUser").text("Welcome Back, " + clientName + "!");
+      });
+
+      // Tell clients that a user has left the chat
+      socket.on("leftChat", function(clientName) {
+        $("#messages").append(
+          $("<li>").html(
+            "<i>" + "<b>" + clientName + "</b>" + " has left the chat." + "</i>"
+          )
+        );
+      });
+      // Tell clients a user has entered the chat
+      socket.on("enterChat", function(clientName) {
+        $("#messages").append(
+          $("<li>").html(
+            "<i>" +
+              "<b>" +
+              clientName +
+              "</b>" +
+              " has entered the chat." +
+              "</i>"
+          )
+        );
+      });
+      // Update Online users on client page
+      socket.on("displayUsers", function(users) {
+        // Initialising to empty string fixes printed undefined
+        var addUsers = "";
+        for (i = 0; i < users.length; i++) {
+          addUsers +=
+            "<li>" +
+            '<b><span style="color:' +
+            users[i].color +
+            '">' +
+            users[i].clientName +
+            "</b>" +
+            "</li>";
+        }
+        $("#currUsers").html(addUsers);
+      });
+    });
+  </script>
+  <head>
+    <link rel="stylesheet" type="text/css" href="./css/index.css" />
+    <title>Chris' Chat</title>
+    <style></style>
+  </head>
+  <body>
+    <!-- FlexBox page formatting extracted from W3Schools: https://www.w3schools.com/css/css3_flexbox.asp -->
+    <div class="container">
+      <div class="row">
+        <div class="column">
+          <div class="user-class">
+            <p id="onlineUser"></p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column2">
+          <div class="chatContainer">
+            <div class="messages-class">
+              <ul id="messages"></ul>
+            </div>
+          </div>
+        </div>
+        <div class="column3">
+          <div class="online-text-class">
+            <h2>Online Users</h2>
+            <ul class="otc-list" id="currUsers"></ul>
+            <br />
+            <h2>Special Instructions:</h2>
+            <p>/nick (new nickname)</p>
+
+            <p>/nickcolor (color)</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column">
+            <div class="typing-class">
+              <form action="">
+                <input id="m" autocomplete="off" /><button>Send</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

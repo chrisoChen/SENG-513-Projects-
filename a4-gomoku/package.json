@@ -1,0 +1,12 @@
+{
+  "name": "gomoku-seng-513-individ-project",
+  "version": "0.0.1",
+  "description": "individual project in lieu of final project because of miss corona",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "cookies": "^0.8.0",
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0",
+    "uuid": "^7.0.3"
+  }
+}

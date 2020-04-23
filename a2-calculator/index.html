@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,  initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    
+    <!-- Script Source -->
+    <script src="./script.js"></script>
+    <!-- My CSS -->
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <!-- BootStrap to Format Page -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <title>Calculator</title>
+  </head>
+  <body onload="append('0')">
+    <div class="calculator">
+      <div class="h2-display-box">
+        <h2 id="ans-display" class="prev-display">🕗:</h2>
+      </div>
+
+      <div id="display" class="display"></div>
+
+      <div class="button-keys">
+        <!-- Empty buttons exist for formating only -->
+        <button type="button" disabled></button>
+        <button type="button" disabled></button>
+        <button id="backspace" class="backspace-button" onclick="backspace()">
+          CE
+        </button>
+        <button id="resetCalc" class="reset-button" onclick="reset()">C</button>
+
+        <button id="left-bracket" onclick="append('(')">(</button>
+        <button id="right-bracket" onclick="append(')')">)</button>
+        <button
+          data-toggle="tooltip"
+          title="ANS"
+          id="ans"
+          onclick="append(lastCalc)"
+        >
+          🕗
+        </button>
+        <button id="div" onclick="append('/')">÷</button>
+
+        <button id="7" onclick="append('7')">7</button>
+        <button id="8" onclick="append('8')">8</button>
+        <button id="9" onclick="append('9')">9</button>
+        <button id="mul" onclick="append('*')">×</button>
+
+        <button id="4" onclick="append('4')">4</button>
+        <button id="5" onclick="append('5')">5</button>
+        <button id="6" onclick="append('6')">6</button>
+        <button id="sub" onclick="append('-')">-</button>
+
+        <button id="1" onclick="append('1')">1</button>
+        <button id="2" onclick="append('2')">2</button>
+        <button id="3" onclick="append('3')">3</button>
+        <button id="add" onclick="append('+')">+</button>
+
+        <button id="0" onclick="append('0')">0</button>
+        <button id="decimal" onclick="append('.')">.</button>
+        <button id="equal" class="equal-button" onclick="calculate()">=</button>
+      </div>
+    </div>
+  </body>
+</html>

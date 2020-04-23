@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <!-- Socket.io and JQuery -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <!-- Client JS -->
+  <script src="./scripts/game.js"></script>
+  <script src="./scripts/player.js"></script>
+  <script src="./scripts/index.js"></script>
+
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Boostrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <!-- My CSS -->
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <title>Gomoku Menu</title>
+  </head>
+  <body>
+    <div id="main">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-justify-content-lg">
+            <div class="gameName">
+              <p>Gomoku Game</p>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-justify-content-lg" align="center">
+            <div class="card1">
+              <div class="playerName">
+                <div id="theName"></div>
+                <p>You can change your username by entering it below:</p>
+                <form id="nameFormId" action="" class="nameForm">
+                  <input id="nameFormInput" autocomplete="off" />
+                  <button class="btn btn-primary">Send</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col" align="center">
+            <div class="card2">
+              <div class="gameInfo">
+                <p>
+                  To <b> start a new game, </b>give this code to your opponent:
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col" align="center">
+            <div class="card2">
+              <div class="random">
+                <p>To enter a random game, click below:</p>
+                <button class="btn btn-primary" id="randomButton">
+                  Random
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col" align="center">
+            <div class="card2">
+              <div class="enterPin">
+                <p>Enter your friend's code here to join a game with them!</p>
+                <form id="joinFriendForm" action="">
+                  <input id="joinFriend" autocomplete="off" /><button
+                    class="btn btn-primary"
+                    style="margin: 2px;"
+                  >
+                    Send
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Board HTML hidden on first visit to page  -->
+    <script id="gomoku-template" type="text/template">
+      <div class="gameTitle"></div>
+      <div class="myColor"></div>
+      <div id="colorThemes" >
+        <p>Color Themes:</p>
+        <div id="buttonThemes"></div>
+      </div>
+      <div class="currentTurn"></div>
+      <div class='board'></div><br>
+    </script>
+
+    <!-- JQuery, Popper.js, then Boostrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
